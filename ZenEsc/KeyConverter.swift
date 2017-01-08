@@ -26,13 +26,13 @@ class KeyConverter: NSObject {
     func setActiveApp(_ notification: NSNotification) {
         // do notiong
         // うまくアプリケーション間のフォーカスが動かないことの対策。
-//        print("set active app")
-//        let app = notification.userInfo!["NSWorkspaceApplicationKey"] as! NSRunningApplication
-//        
-//        if let name = app.localizedName, let id = app.bundleIdentifier {
-//            print(name)
-//            print(id)
-//        }
+        print("set active app")
+        let app = notification.userInfo!["NSWorkspaceApplicationKey"] as! NSRunningApplication
+        
+        if let name = app.localizedName, let id = app.bundleIdentifier {
+            print(name)
+            print(id)
+        }
     }
     
     func watch() {
@@ -93,13 +93,8 @@ class KeyConverter: NSObject {
                 toSendESC = true
             } else {
                 if toSendESC {
-                    let loc = CGEventTapLocation.cghidEventTap
-                    let eisuuEvent = CGEvent(keyboardEventSource: nil, virtualKey: CGKeyCode(102), keyDown: true)!
-                    eisuuEvent.flags = []
-                    eisuuEvent.post(tap: loc)
-//
-                    event.setIntegerValueField(.keyboardEventKeycode, value: 53)
-                    event.type = .keyDown
+                    sendEisuu()
+                    sendEsc()
                     return Unmanaged.passUnretained(event)
                 }
             }
@@ -108,79 +103,28 @@ class KeyConverter: NSObject {
         }
         
         return Unmanaged.passUnretained(event)
-        
-//        if let mediaKeyEvent = MediaKeyEvent(event) {
-//            return mediaKeyEvent.keyDown ? mediaKeyDown(mediaKeyEvent) : mediaKeyUp(mediaKeyEvent)
-//        }
-//        
-//        switch type {
-//        case CGEventType.flagsChanged:
-//            let keyCode = CGKeyCode(event.getIntegerValueField(.keyboardEventKeycode))
-//            let flags = event.flags
-//            print(flags.contains(CGEventFlags.maskControl))
-//            return Unmanaged.passUnretained(event)
-//            
-//            //
-//            //            if modifierMasks[keyCode] == nil {
-//            //                return Unmanaged.passUnretained(event)
-//            //            }
-//            //            return event.flags.rawValue & modifierMasks[keyCode]!.rawValue != 0 ?
-//            //                modifierKeyDown(event) : modifierKeyUp(event)
-//        //
-//        case CGEventType.keyDown:
-//            return keyDown(event)
-//            
-//        case CGEventType.keyUp:
-//            return keyUp(event)
-//            
-//        default:
-//            self.keyCode = nil
-//            
-//            return Unmanaged.passUnretained(event)
-//        }
-    }
-
-    func keyDown(_ event: CGEvent) -> Unmanaged<CGEvent>? {
-//        #if DEBUG
-//            // print("keyCode: \(KeyboardShortcut(event).keyCode)")
-//             print(KeyboardShortcut(event).toString())
-//        #endif
-        
-        
-        self.keyCode = nil
-        
-        let keyCode = CGKeyCode(event.getIntegerValueField(.keyboardEventKeycode))
-//        print(event)
-//        print(keyCode)
-        
-//        if let keyTextField = activeKeyTextField {
-//            keyTextField.shortcut = KeyboardShortcut(event)
-//            keyTextField.stringValue = keyTextField.shortcut!.toString()
-//            
-//            return nil
-//        }
-        
-//        if hasConvertedEvent(event) {
-//            if let event = getConvertedEvent(event) {
-//                return Unmanaged.passUnretained(event)
-//            }
-//            return nil
-//        }
-        
-        return Unmanaged.passUnretained(event)
     }
     
-    func keyUp(_ event: CGEvent) -> Unmanaged<CGEvent>? {
-//        print(event)
-//        self.keyCode = nil
-//        
-//        if hasConvertedEvent(event) {
-//            if let event = getConvertedEvent(event) {
-//                return Unmanaged.passUnretained(event)
-//            }
-//            return nil
-//        }
-        
-        return Unmanaged.passUnretained(event)
+    func sendEsc() {
+        sendKeyDown(keyCode: 53)
+        sendKeyUp(keyCode: 53)
+    }
+    
+    func sendEisuu() {
+        sendKeyDown(keyCode: 102)
+        sendKeyUp(keyCode: 102)
+    }
+    
+    func sendKeyDown(keyCode: CGKeyCode) {
+        let loc = CGEventTapLocation.cghidEventTap
+        let event = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: true)!
+        event.flags = []
+        event.post(tap: loc)
+    }
+    func sendKeyUp(keyCode: CGKeyCode) {
+        let loc = CGEventTapLocation.cghidEventTap
+        let event = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: false)!
+        event.flags = CGEventFlags()
+        event.post(tap: loc)
     }
 }
