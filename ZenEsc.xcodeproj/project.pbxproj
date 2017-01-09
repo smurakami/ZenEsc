@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		37A758AC1E22417100E5E668 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A758AB1E22417100E5E668 /* AppDelegate.swift */; };
-		37A758AE1E22417100E5E668 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A758AD1E22417100E5E668 /* ViewController.swift */; };
+		37A758AE1E22417100E5E668 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A758AD1E22417100E5E668 /* DebugViewController.swift */; };
 		37A758B01E22417100E5E668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37A758AF1E22417100E5E668 /* Assets.xcassets */; };
 		37A758B31E22417100E5E668 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A758B11E22417100E5E668 /* Main.storyboard */; };
 		37A758BE1E22417100E5E668 /* ZenEscTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A758BD1E22417100E5E668 /* ZenEscTests.swift */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		37A758A81E22417100E5E668 /* ZenEsc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenEsc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37A758AB1E22417100E5E668 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		37A758AD1E22417100E5E668 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		37A758AD1E22417100E5E668 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		37A758AF1E22417100E5E668 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37A758B21E22417100E5E668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		37A758B41E22417100E5E668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 			children = (
 				37A758AB1E22417100E5E668 /* AppDelegate.swift */,
 				37A758D61E2244AE00E5E668 /* KeyConverter.swift */,
-				37A758AD1E22417100E5E668 /* ViewController.swift */,
+				37A758AD1E22417100E5E668 /* DebugViewController.swift */,
 				37A758AF1E22417100E5E668 /* Assets.xcassets */,
 				37A758B11E22417100E5E668 /* Main.storyboard */,
 				37A758B41E22417100E5E668 /* Info.plist */,
@@ -258,7 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37A758AE1E22417100E5E668 /* ViewController.swift in Sources */,
+				37A758AE1E22417100E5E668 /* DebugViewController.swift in Sources */,
 				37A758D71E2244AE00E5E668 /* KeyConverter.swift in Sources */,
 				37A758AC1E22417100E5E668 /* AppDelegate.swift in Sources */,
 			);
@@ -500,6 +500,7 @@
 				37A758CF1E22417100E5E668 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		37A758D01E22417100E5E668 /* Build configuration list for PBXNativeTarget "ZenEscTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +509,7 @@
 				37A758D21E22417100E5E668 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		37A758D31E22417100E5E668 /* Build configuration list for PBXNativeTarget "ZenEscUITests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +518,7 @@
 				37A758D51E22417100E5E668 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
